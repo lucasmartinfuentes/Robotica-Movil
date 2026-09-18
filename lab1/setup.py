@@ -22,8 +22,10 @@ setup(
             'pytest',
         ],
     },
-    entry_points={
+        entry_points={
         'console_scripts': [
+            'dead_reckoning_nav = lab1.dead_reckoning_nav:main',
+            'pose_loader = lab1.pose_loader:main',
         ],
     },
 )
