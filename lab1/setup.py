@@ -10,6 +10,11 @@ setup(
         ('share/ament_index/resource_index/packages',
             ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
+        ('share/' + package_name + '/launch', [
+            'launch/lab1_simulator.xml',
+            'launch/avanzar_y_rotar.xml',
+        ]),
+        ('share/' + package_name + '/config', ['config/poses.txt']),
     ],
     install_requires=['setuptools'],
     zip_safe=True,
@@ -26,6 +31,7 @@ setup(
         'console_scripts': [
             'dead_reckoning_nav = lab1.dead_reckoning_nav:main',
             'pose_loader = lab1.pose_loader:main',
+            'pose_recorder = lab1.pose_recorder:main',
         ],
     },
 )

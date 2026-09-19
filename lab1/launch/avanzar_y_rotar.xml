@@ -1,0 +1,11 @@
+<launch>
+  <!-- Simulador -->
+  <include file="$(find-pkg-share very_simple_robot_simulator)/launch/minimal_simulator_py.xml" />
+  <include file="$(find-pkg-share very_simple_robot_simulator)/launch/openni_simulator.xml" />
+  <include file="$(find-pkg-share very_simple_robot_simulator)/launch/world_state.xml" />
+
+  <!-- Nodos propios -->
+  <node pkg="lab1" exec="dead_reckoning_nav" />
+  <node pkg="lab1" exec="pose_recorder" />
+  <node pkg="lab1" exec="pose_loader" />
+</launch>
