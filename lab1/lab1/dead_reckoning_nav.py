@@ -21,6 +21,9 @@ class DeadReckoningNav(Node):
             PoseArray, 'goal_list', self.accion_mover_cb, 10
         )
 
+        self.declare_parameter("factor", 1.0)
+        self.factor = self.get_parameter("factor").value
+
     # --- Nivel 1 ---
     def aplicar_velocidad(self, speed_command_list):
         for v, w, t in speed_command_list:
@@ -42,14 +45,14 @@ class DeadReckoningNav(Node):
 
         angulo = math.atan2(y, x)
         w1 = self.angular_speed if angulo >= 0 else -self.angular_speed
-        t1 = abs(angulo) / self.angular_speed
+        t1 = (abs(angulo) / self.angular_speed) * self.factor
 
         distancia = math.sqrt(x**2 + y**2)
         t2 = distancia / self.linear_speed
 
         theta_restante = theta - angulo
         w3 = self.angular_speed if theta_restante >= 0 else -self.angular_speed
-        t3 = abs(theta_restante) / self.angular_speed
+        t3 = (abs(theta_restante) / self.angular_speed) * self.factor
 
         speed_command_list = [
             (0.0, w1, t1),

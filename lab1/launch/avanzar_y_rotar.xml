@@ -3,9 +3,13 @@
   <include file="$(find-pkg-share very_simple_robot_simulator)/launch/minimal_simulator_py.xml" />
   <include file="$(find-pkg-share very_simple_robot_simulator)/launch/openni_simulator.xml" />
   <include file="$(find-pkg-share very_simple_robot_simulator)/launch/world_state.xml" />
-
+ <!--parámetro de factor de correccion-->
+  <arg name = "factor" default = "1.115"/> 
+  
   <!-- Nodos propios -->
-  <node pkg="lab1" exec="dead_reckoning_nav" />
+  <node pkg="lab1" exec="dead_reckoning_nav" >
+    <param name ="factor" value = "$(var factor)"/>
+    </node>
   <node pkg="lab1" exec="pose_recorder" />
   <node pkg="lab1" exec="pose_loader" />
 </launch>

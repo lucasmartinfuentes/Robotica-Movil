@@ -13,6 +13,7 @@ setup(
         ('share/' + package_name + '/launch', [
             'launch/lab1_simulator.xml',
             'launch/avanzar_y_rotar.xml',
+            'launch/teleop.xml',
         ]),
         ('share/' + package_name + '/config', ['config/poses.txt']),
     ],
@@ -32,6 +33,7 @@ setup(
             'dead_reckoning_nav = lab1.dead_reckoning_nav:main',
             'pose_loader = lab1.pose_loader:main',
             'pose_recorder = lab1.pose_recorder:main',
+            'teleop = lab1.teleop:main',       
         ],
     },
 )
