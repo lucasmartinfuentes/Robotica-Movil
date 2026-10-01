@@ -14,6 +14,7 @@ setup(
             'launch/lab1_simulator.xml',
             'launch/avanzar_y_rotar.xml',
             'launch/teleop.xml',
+            'launch/accion_y_percepcion.xml',
         ]),
         ('share/' + package_name + '/config', ['config/poses.txt']),
     ],
@@ -34,6 +35,7 @@ setup(
             'pose_loader = lab1.pose_loader:main',
             'pose_recorder = lab1.pose_recorder:main',
             'teleop = lab1.teleop:main',       
+            'obstacle_detector = lab1.obstacle_detector:main',
         ],
     },
 )
