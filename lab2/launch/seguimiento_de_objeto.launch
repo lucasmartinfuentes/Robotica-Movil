@@ -1,0 +1,6 @@
+<launch>
+  <node pkg="lab2_rm" exec="detector_de_objeto"/>
+  <node pkg="lab2_rm" exec="seguidor_de_objeto">
+    <remap from="cmd_vel" to="/cmd_vel_mux/input/navigation"/>
+  </node>
+</launch>
