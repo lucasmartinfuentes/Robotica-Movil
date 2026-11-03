@@ -121,3 +121,47 @@ Las Partes 2 y 3 pueden partir con la clase P tal como viene.
 
 - `colcon build` limpio.
 - Probar los 3 launch tal como los pide el enunciado.
+
+
+
+#### Instalación (netbook del robot)
+
+```bash
+mkdir -p ~/ros2_ws/src && cd ~/ros2_ws/src
+git clone https://github.com/lucasmartinfuentes/Robotica-Movil.git
+cd ~/ros2_ws && colcon build --symlink-install --packages-select lab2_rm
+source install/local_setup.bash
+```
+
+En cada terminal nueva:
+
+```bash
+source ~/ros2_ws/install/local_setup.bash
+```
+
+#### Ejecución
+
+Con el robot en el piso y encendido:
+
+```bash
+ros2 launch lab2_rm seguimiento_de_objeto.launch
+```
+
+Levanta el Kinect, el kobuki, `detector_de_objeto` y `seguidor_de_objeto`.
+
+#### Verificación
+
+```bash
+ros2 topic list | grep -i -E "image|rgb"      # nombre del tópico de la cámara
+ros2 topic echo /blue_square_position          # x en [-1, 1] o nan
+ros2 topic echo /commands/velocity             # velocidad enviada al robot
+ros2 run rqt_image_view rqt_image_view         # ver la cámara
+```
+
+#### Probar solo el detector (sin mover el robot)
+
+```bash
+ros2 run kinect_ros2 kinect_ros2_node --ros-args -r __ns:=/kinect   # terminal 1
+ros2 run lab2_rm detector_de_objeto                                  # terminal 2
+ros2 topic echo /blue_square_position                                # terminal 3
+```
