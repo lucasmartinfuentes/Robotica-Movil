@@ -22,6 +22,8 @@ setup(
     license='TODO: License declaration',
     entry_points={
         'console_scripts': [
+            'detector_de_objeto = lab2_rm.detector_de_objeto:main',
+            'seguidor_de_objeto = lab2_rm.seguidor_de_objeto:main',
         ],
     },
 )
