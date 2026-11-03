@@ -1,6 +1,8 @@
 <launch>
+  <node pkg="kinect_ros2" exec="kinect_ros2_node" name="kinect_ros2_node" namespace="kinect"/>
+  <include file="$(find-pkg-share kobuki_node)/launch/kobuki_node-launch.py"/>
   <node pkg="lab2_rm" exec="detector_de_objeto"/>
   <node pkg="lab2_rm" exec="seguidor_de_objeto">
-    <remap from="cmd_vel" to="/cmd_vel_mux/input/navigation"/>
+    <remap from="cmd_vel" to="/commands/velocity"/>
   </node>
 </launch>
