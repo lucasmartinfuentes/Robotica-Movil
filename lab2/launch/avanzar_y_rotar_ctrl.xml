@@ -1,0 +1,13 @@
+<launch>
+    <!-- Iniciar el simulador (ahora desde lab2_rm) -->
+    <include file="$(find-pkg-share lab2_rm)/launch/lab1_simulator.xml" />
+
+    <!-- Iniciar el publicador de la lista de poses (ahora desde lab2_rm) -->
+    <node pkg="lab2_rm" exec="pose_loader" name="pose_loader" output="screen" />
+
+    <!-- Iniciar el nuevo nodo de navegación en lazo cerrado -->
+    <node pkg="lab2_rm" exec="lazo_cerrado_nav" name="lazo_cerrado_nav" output="screen" />
+    
+    <!-- Grabador de poses (opcional, ahora desde lab2_rm) -->
+    <node pkg="lab2_rm" exec="pose_recorder" name="pose_recorder" output="screen" />
+</launch>
