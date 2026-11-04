@@ -13,6 +13,7 @@ setup(
             ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
         ('share/' + package_name + '/launch', glob('launch/*')),
+        ('share/' + package_name + '/trayectorias', glob('trayectorias/*.txt')),
     ],
     install_requires=['setuptools'],
     zip_safe=True,
@@ -24,6 +25,8 @@ setup(
         'console_scripts': [
             'detector_de_objeto = lab2_rm.detector_de_objeto:main',
             'seguidor_de_objeto = lab2_rm.seguidor_de_objeto:main',
+            'path_publisher = lab2_rm.path_publisher:main',
+            'follow_the_carrot = lab2_rm.follow_the_carrot:main',
         ],
     },
 )
