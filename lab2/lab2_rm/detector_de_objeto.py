@@ -6,10 +6,10 @@ from sensor_msgs.msg import Image
 from std_msgs.msg import Float64, Bool
 from cv_bridge import CvBridge
 
-AZUL_BAJO = np.array([100, 80, 50])    # H, S, V mínimos
-AZUL_ALTO = np.array([130, 255, 255])  # H, S, V máximos
-AREA_MIN = 500                         # área mínima del cuadrado [px]
-AREA_MAX = 20000                       # área [px] desde la cual la hoja está "cerca"
+AZUL_BAJO = np.array([100, 80, 50])    
+AZUL_ALTO = np.array([130, 255, 255])  
+AREA_MIN = 500                         
+AREA_MAX = 20000                       
 
 
 class DetectorDeObjeto(Node):
@@ -27,7 +27,7 @@ class DetectorDeObjeto(Node):
         mascara = cv2.morphologyEx(mascara, cv2.MORPH_OPEN, np.ones((5, 5), np.uint8))
         contornos, _ = cv2.findContours(mascara, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
-        x = float('nan')  # NaN = no se ve el cuadrado
+        x = float('nan') 
         cerca = False
         if contornos:
             c = max(contornos, key=cv2.contourArea)
@@ -35,7 +35,7 @@ class DetectorDeObjeto(Node):
             if area > AREA_MIN:
                 m = cv2.moments(c)
                 mitad = img.shape[1] / 2
-                x = (m['m10'] / m['m00'] - mitad) / mitad  # -1 izquierda, 0 centro, +1 derecha
+                x = (m['m10'] / m['m00'] - mitad) / mitad  
                 cerca = area > AREA_MAX
         self.pub_cerca.publish(Bool(data=cerca))
         self.pub.publish(Float64(data=x))
