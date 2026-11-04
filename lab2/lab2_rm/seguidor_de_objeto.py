@@ -7,7 +7,7 @@ from geometry_msgs.msg import Twist
 from lab2_rm.pid_controller import PIDController
 
 KP = 0.5
-V_LINEAL = 0.1
+V_LINEAL = 0.2
 
 
 class SeguidorDeObjeto(Node):
