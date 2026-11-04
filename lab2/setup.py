@@ -13,6 +13,7 @@ setup(
             ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
         ('share/' + package_name + '/launch', glob('launch/*')),
+        ('share/' + package_name + '/config', glob('config/*')),
     ],
     install_requires=['setuptools'],
     zip_safe=True,
@@ -24,6 +25,9 @@ setup(
         'console_scripts': [
             'detector_de_objeto = lab2_rm.detector_de_objeto:main',
             'seguidor_de_objeto = lab2_rm.seguidor_de_objeto:main',
+            'lazo_cerrado_nav = lab2_rm.lazo_cerrado_nav:main',
+            'pose_loader = lab2_rm.pose_loader:main',
+            'pose_recorder = lab2_rm.pose_recorder:main',
         ],
     },
 )
