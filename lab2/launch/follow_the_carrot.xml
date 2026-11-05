@@ -1,0 +1,16 @@
+<launch>
+  <arg name="trayectoria" default="path_line" />
+  <arg name="initial_y" default="2.0" />
+
+  <include file="$(find-pkg-share very_simple_robot_simulator)/launch/minimal_simulator_py.xml">
+    <arg name="initial_y" value="$(var initial_y)" />
+  </include>
+  <include file="$(find-pkg-share very_simple_robot_simulator)/launch/world_state.xml" />
+
+  <node pkg="lab2_rm" exec="follow_the_carrot" name="follow_the_carrot" output="screen" />
+  <node pkg="lab2_rm" exec="path_publisher" name="path_publisher" output="screen">
+    <param name="archivo" value="$(find-pkg-share lab2_rm)/trayectorias/$(var trayectoria).txt" />
+  </node>
+  <node pkg="lab2_rm" exec="pose_recorder" name="pose_recorder" output="screen" />
+  <node pkg="lab2_rm" exec="visualizador" name="visualizador" output="screen" />
+</launch>
