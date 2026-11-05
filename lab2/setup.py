@@ -14,6 +14,7 @@ setup(
         ('share/' + package_name, ['package.xml']),
         ('share/' + package_name + '/launch', glob('launch/*')),
         ('share/' + package_name + '/trayectorias', glob('trayectorias/*.txt')),
+        ('share/' + package_name + '/config', glob('config/*')),
     ],
     install_requires=['setuptools'],
     zip_safe=True,
@@ -27,6 +28,9 @@ setup(
             'seguidor_de_objeto = lab2_rm.seguidor_de_objeto:main',
             'path_publisher = lab2_rm.path_publisher:main',
             'follow_the_carrot = lab2_rm.follow_the_carrot:main',
+            'lazo_cerrado_nav = lab2_rm.lazo_cerrado_nav:main',
+            'pose_loader = lab2_rm.pose_loader:main',
+            'pose_recorder = lab2_rm.pose_recorder:main',
         ],
     },
 )
